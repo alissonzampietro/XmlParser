@@ -43,7 +43,7 @@ class XmlParser
             $this->xmlInstance = new SimpleXMLElement('<Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"/>');
             $this->xmlInstance->addChild('Header');
             $body = $this->xmlInstance->addChild('Body');
-            $this->convertJson2Xml($data, $body);
+            $this->convert2Xml($data, $body);
         }
     }
 
@@ -71,7 +71,7 @@ class XmlParser
                     $subnode->addAttribute("p1:edp","","https://edp.pt/SwitchingElectricity/GAR_ORD/v1");
                     $this->first = false;
                 }
-                $this->convertJson2Xml($value, $subnode);
+                $this->convert2Xml($value, $subnode);
             } else {
                 if (strpos($key, '@') !== false) {
                     $xmlInstance->addAttribute(str_replace('@', '', $key), $value);
